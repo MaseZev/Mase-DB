@@ -1,5 +1,7 @@
 import masedb
-from masedb.func import *
+from masedb.find import find_data
+from masedb.insert import insert_data
+from masedb.update import update_data
 from config import url
 import asyncio
 
