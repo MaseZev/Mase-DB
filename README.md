@@ -4,7 +4,7 @@
 ## Документация
 
 Документация:
- - (docs)[https://mase-db.gitbook.io/docs/]
+ - [docs](https://mase-db.gitbook.io/docs/)
 
 ## Установка
 ```py
@@ -30,11 +30,8 @@ pip install masedb
 
 ### Примеры
 ```py
-import masedb
-from masedb.find import find_data
-from masedb.insert import insert_data
-from masedb.update import update_data
-from masedb.delete import delete_data
+from masedb.queries import *
+from config import url
 import asyncio
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -51,15 +48,12 @@ import asyncio
 DatabaseName = 'pondb2'
 CollectionName = 'poncoll2'
 
-# Сыллка отт монгодб для подключения
-
-url = ''
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async def test():
 
-	db = await find_data(url=url, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name': 'mark'})
+	db = await find_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name': 'mark'})
 	print(db)
 
 	if not db:
