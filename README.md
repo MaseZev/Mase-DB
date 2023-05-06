@@ -1,4 +1,4 @@
-<h1 align=center>Mase-DB v1.0.8</h1>
+<h1 align=center>Mase-DB v1.0.9</h1>
 <p align=center>Легкое использование базы данных монгодб.</p>
 
 ##Документация
