@@ -1,13 +1,13 @@
 from setuptools import setup
 import re
 
-readme = '''<h1 align=center>Mase-DB v1.1.4</h1>
+readme = '''<h1 align=center>Mase-DB v1.1.8</h1>
 <p align=center>Легкое использование базы данных монгодб.</p>
 
-##Документация
+## Документация
 
 Документация:
- - Скоро будет!
+ - [docs](https://mase-db.gitbook.io/docs/)
 
 ## Установка
 ```py
@@ -17,7 +17,7 @@ pip install --upgrade masedb
 # ЕСЛИ НЕ УСТАНОВЛЕН
 python3 -m pip install --upgrade masedb
 ```
-##or
+## or
 ```py
 pip install masedb
 ```
@@ -33,11 +33,8 @@ pip install masedb
 
 ### Примеры
 ```py
-import masedb
-from masedb.find import find_data
-from masedb.insert import insert_data
-from masedb.update import update_data
-from masedb.delete import delete_data
+from masedb.queries import *
+from config import url
 import asyncio
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,15 +51,12 @@ import asyncio
 DatabaseName = 'pondb2'
 CollectionName = 'poncoll2'
 
-# Сыллка отт монгодб для подключения
-
-url = ''
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 async def test():
 
-	db = await find_data(url=url, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name': 'mark'})
+	db = await find_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name': 'mark'})
 	print(db)
 
 	if not db:
@@ -84,6 +78,7 @@ async def test():
 asyncio.run(test())
 
 
+
 ```
 
 
@@ -93,7 +88,7 @@ asyncio.run(test())
 requirements = ["pymongo","dnspython","motor"]
 
 setup(name='masedb',
-      version='1.1.4',
+      version='1.1.8',
       description='Easy mase-db use mongodb, motor asyncio',
       url='https://github.com/MaseZev/Mase-DB',
       packages=['masedb'],
