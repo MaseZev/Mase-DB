@@ -31,7 +31,9 @@ pip install masedb
 ### Примеры
 ```py
 import masedb
-from masedb.func import *
+from masedb.find import find_data
+from masedb.insert import insert_data
+from masedb.update import update_data
 from config import url
 import asyncio
 
@@ -42,16 +44,15 @@ import asyncio
 DatabaseName = 'pondb2'
 CollectionName = 'poncoll2'
 
-url = 'uri mongodb'
 
 async def test():
 
-	db = await find_data(url=url, DatabaseName=DatabaseName, CollectionName=CollectionName)
+	db = await find_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName)
 	print(db)
 	try: 
 		cash = db['cash']
 	except:
-		await insert_data(url=url, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'cash': 19})
+		await insert_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'cash': 19})
 		cash = 'Успешное занесение'
 
 	print(cash)
