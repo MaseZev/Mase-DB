@@ -1,10 +1,10 @@
-<h1 align=center>Mase-DB v1.1.4</h1>
+<h1 align=center>Mase-DB v1.1.8</h1>
 <p align=center>Легкое использование базы данных монгодб.</p>
 
 ## Документация
 
 Документация:
- - Скоро будет!
+ - (docs)[https://mase-db.gitbook.io/docs/]
 
 ## Установка
 ```py
