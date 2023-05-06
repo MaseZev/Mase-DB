@@ -1,7 +1,7 @@
 from setuptools import setup
 import re
 
-readme = '''<h1 align=center>Mase-DB v1.0.8</h1>
+readme = '''<h1 align=center>Mase-DB v1.1.0</h1>
 <p align=center>Легкое использование базы данных монгодб.</p>
 
 ##Документация
@@ -73,7 +73,7 @@ asyncio.run(test())
 requirements = ["pymongo","dnspython","motor"]
 
 setup(name='masedb',
-      version='1.0.8',
+      version='1.1.0',
       description='Легкое использование базы данных монгодб',
       url='https://github.com/MaseZev/Mase-DB',
       packages=['masedb.func'],
