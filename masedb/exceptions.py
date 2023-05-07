@@ -1,0 +1,2 @@
+class ConnectDBException(Exception):
+     pass
