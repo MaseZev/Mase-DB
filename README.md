@@ -1,4 +1,4 @@
-<h1 align=center>Mase-DB v1.1.8</h1>
+<h1 align=center>Mase-DB v1.2.1</h1>
 <p align=center>Легкое использование базы данных монгодб.</p>
 
 ## Документация
@@ -30,16 +30,18 @@ pip install masedb
 
 ### Примеры
 ```py
-from masedb.queries import *
 from config import url
+from masedb.query import Query
 import asyncio
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#await find_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name': 'mark'})
-#await insert_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name': 'mark'})
-#await update_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param1={'name': 'mark'}, param2={'$set':{'let': 10}})
-#await delete_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'cash': 10})
+#client = Query(DatabaseName, CollectionName, url.uri)
+
+#await client.find(param={'name': 'mark'})
+#await client.insert(param={'name': 'mark'})
+#await client.update(param1={'name': 'mark'}, param2={'$set':{'let': 10}})
+#await client.delete(param={'cash': 10})
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -51,24 +53,26 @@ CollectionName = 'poncoll2'
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------
 
+client = Query(DatabaseName, CollectionName, url.uri)
+
 async def test():
 
-	db = await find_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name': 'mark'})
+	db = await client.find(param={'name': 'mark'})
 	print(db)
 
 	if not db:
 		print('занесение')
 
-		return await insert_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'name':'mark'})
+		return await client.insert(param={'name':'mark'})
 
 	try: cash = db['cash']
 	except: cash = None
 
-	await delete_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param={'cash': 10})
+	await client.delete(param={'cash': 10})
 
 	if not cash:
 		print('update data')
-		return await update_data(url=url.uri, DatabaseName=DatabaseName, CollectionName=CollectionName, param1={'name':'mark'}, param2={'$set':{'cash': 10}})
+		return await client.update(param1={'name':'mark'}, param2={'$set':{'cash': 10}})
 
 	print(cash)
 
